@@ -81,7 +81,7 @@ class VersionTests: XCTestCase {
             Version("1.2.3"),
             Version("1.2.3+B001")
         ].map { $0! }
-        for (index, less) in versions.enumerate() {
+        for (index, less) in versions.enumerated() {
             let range = (index + 1)..<(versions.count)
             for greater in versions[range] {
                 XCTAssert(less <= greater)
@@ -128,15 +128,15 @@ class VersionTests: XCTestCase {
     }
     
     func testBundleVersion() {
-        let mainBundle = NSBundle(forClass: VersionTests.self)
+        let mainBundle = Bundle(for: VersionTests.self)
         let path = mainBundle.pathForResource("Test", ofType: "bundle")
-        let testBundle = NSBundle(path: path!)!
+        let testBundle = Bundle(path: path!)!
         XCTAssertEqual(testBundle.shortVersion!, Version(major: 1, minor: 2, patch: 3))
         XCTAssertEqual(testBundle.version!,      version)
     }
     
     func testProcessInfoVersion() {
-        let processVersion : Version = NSProcessInfo.processInfo().operationSystemVersion
+        let processVersion : Version = ProcessInfo.processInfo.operationSystemVersion
         XCTAssert(processVersion > "7.0.0")
     }
     
