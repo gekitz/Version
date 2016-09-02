@@ -155,7 +155,7 @@ public func <(lhs: Version, rhs: Version) -> Bool {
                 if l != r {
                     let regex = lenientVersionParser.numberRegex
                     if regex.match(l) && regex.match(r) {
-                        return Int(l) < Int(r)
+                        return Int(l)! < Int(r)!
                     } else {
                         return l < r
                     }

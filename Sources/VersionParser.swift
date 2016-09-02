@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum VersionParserError: ErrorProtocol {
+enum VersionParserError: Error {
     case missingMinorComponent
     case missingPatchComponent
     case invalidComponents
